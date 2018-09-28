@@ -1,0 +1,9 @@
+{:navgroup: .navgroup}
+{:topicgroup: .topicgroup}
+
+{: .toc subcollection="cloud-databases-cli" audience="service" arm="3663051" href="/docs/cloud-databases-cli.html"}
+Cloud Databases CLI
+    {: .navgroup id="learn"}
+    cloud-databases-cli.md
+    {: .navgroup-end}
+
