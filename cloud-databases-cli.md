@@ -1,8 +1,8 @@
 ---
  
 copyright:
-  years: 2018
-lastupdated: "2018-08-27"
+  years: 2018, 2019
+lastupdated: "2019-01-18"
 
 ---
 
@@ -14,96 +14,38 @@ lastupdated: "2018-08-27"
 {:tip: .tip}
 
 # {{site.data.keyword.databases-for}} CLI Plug-in
-{: #cloud-databases}
+{: #cdb-reference}
 
-The {{site.data.keyword.databases-for}} CLI Plug-in offers extra methods of accessing the capabilities of the {{site.data.keyword.databases-for}} services. You can use {{site.data.keyword.databases-for}} CLI to manage and connect to {{site.data.keyword.databases-for-postgresql_full}} and {{site.data.keyword.databases-for-redis_full}}. Both services use the {{site.data.keyword.databases-for}} API.
-{:shortdesc} 
+The {{site.data.keyword.databases-for}} CLI Plug-in offers extra methods of accessing the capabilities of the {{site.data.keyword.databases-for}} services. You can use {{site.data.keyword.databases-for}} CLI to manage and connect to 
+- {{site.data.keyword.databases-for-postgresql_full}} 
+- {{site.data.keyword.databases-for-redis_full}} 
+- {{site.data.keyword.databases-for-elasticsearch_full}}
+- {{site.data.keyword.databases-for-etcd_full}}
+- {{site.data.keyword.messages-for-rabbitmq_full}}   
 
 **Note**: {{site.data.keyword.databases-for}} CLI Plug-in requires IBM Cloud CLI to be installed.
-
-## How to install the {{site.data.keyword.databases-for}} CLI Plug-in
-{: #how_to_install_cli}
-
-The {{site.data.keyword.databases-for}} CLI plugin requires that the {{site.data.keyword.cloud_notm}} CLI is installed.
 
 ## The {{site.data.keyword.cloud_notm}} CLI
 {: #install_cli}
 The {{site.data.keyword.cloud_notm}} CLI is a general-purpose developer tool that provides access to your {{site.data.keyword.cloud_notm}} account and services through a command line interface.
 
-An introduction and installation instructions are available on the [{{site.data.keyword.cloud_notm}} CLI Overview](https://console.{DomainName}/docs/cli/index.html#overview) page. If you install the CLI from the cURL command that is provided, you get a selection of extra plug-ins and extensions for multiple IDEs.
+An introduction and installation instructions are available on the [{{site.data.keyword.cloud_notm}} CLI Overview](/docs/cli/reference/ibmcloud?topic=cloud-cli-ibmcloud-cli) page. If you install the CLI from the cURL command that is provided, you get a selection of extra plug-ins and extensions for multiple IDEs.
  
-You can install just the stand-alone package from the [Installing the stand-alone IBM Cloud CLI](https://console.{DomainName}/docs/cli/reference/ibmcloud/download_cli.html#install_use) page. 
+You can install just the stand-alone package from the [Installing the stand-alone IBM Cloud CLI](/docs/cli/reference/ibmcloud?topic=cloud-cli-install-ibmcloud-cli) page. 
 
- ## The {{site.data.keyword.databases-for}} CLI plug-in
- {: installing_cli_plugin}
+Access to services via {{site.data.keyword.cloud_notm}} CLI is governed through Identity and Access Management. In order to use the CLI to view or manage a service (or to grant privileges to another user on your account), you have to set the correct permissions. For more information about IAM management, see the [IAM Getting Started tutorial](/docs/iam?topic=iam-getstarted)
 
- Once you have the {{site.data.keyword.cloud_notm}} CLI, [login](https://console.{DomianName}/docs/cli/reference/ibmcloud/bx_cli.html#ibmcloud_login) and ask it to install the cloud databases plug-in. 
+## Installing the {{site.data.keyword.databases-for}} CLI plug-in
+{: installing_cli_plugin}
+
+Once you have the {{site.data.keyword.cloud_notm}} CLI, [login](/docs/cli/reference/ibmcloud?topic=cloud-cli-ibmcloud_cli#ibmcloud_login) and ask it to install the cloud databases plug-in. 
  
- `ibmcloud plugin install cloud-databases`
+`ibmcloud plugin install cloud-databases`
  
-Use `ibmcloud cdb help` for a list of commands and usage, or see the [documentation](https://console.{DomainName}/docs/databases-cli-plugin/cloud-databases-cli.html#cloud-databases-cli-plug-in) for a command reference. 
+Use `ibmcloud cdb help` for a list of commands and usage information.
 
 ## {{site.data.keyword.databases-for}} CLI Plug-in commands index
 {: #commands_index}
-
-You can specify one of the following commands:
-
-<table summary="Alphabetically ordered  {{site.data.keyword.Bluemix_notm}} infrastructure Block Storage commands that have links that bring you to more info for the command">
-<caption>Table 1. Deployment commands</caption>  
- <thead>
- <th colspan="5">Deployment commands</th>
- </thead>
- <tbody> 
- <tr> 
- <td>[`deployments`](#deployments)</td> 
- <td>[`deployment-about`](#deployment-about)</td> 
- <td>[`deployment-backups-list`](#deployment-backups-list)<td>
-
- </tr> 
- <tr> 
-  <td>[`deployment-backup-now`](#deployment-backup-now)</td>
-  <td>[`deployment-cacert`](#deployment-cacert)</td>
-  <td>[`deployment-connections`](#deployment-connections)</td>
- </tr>
- <tr> 
-  <td>[`deployment-groups`](#deployment-groups)</td>
-  <td>[`deployment-groups-set`](#deployment-groups-set)</td>
-  <td>[`deployment-tasks-list`](#deployment-tasks-list)</td>
-</tr>
-<tr>
- <td>[`deployment-user-create`](#deployment-user-create)</td>
- <td>[`deployment-user-delete`](#deployment-user-delete)</td>
- <td>[`deployment-user-password`](#deployment-user-password)</td>
- </tr>
- <tr>
- <td>[`deployment-whitelist-list`](#deployment-whitelist-list)</td>
- <td>[`deployment-whitelist-add`](#deployment-whitelist-add)</td>
- <td>[`deployment-whitelist-delete`](#deployment-whitelist-delete)</td>
- </tr>
- <tr> 
- </tr>
-</tbody> 
-</table> 
-
-
-<table summary="Alphabetically ordered  {{site.data.keyword.Bluemix_notm}} infrastructure Block Storage commands that have links that bring you to more info for the command">
-<caption>Table 1. Other commands</caption>  
- <thead>
- <th colspan="5">Other commands</th>
- </thead>
- <tbody> 
- <tr> 
- <td>[`backup-show`](#backup-show)</td> 
- <td>[`deployables-group-show`](#deployables-group-show)</td> 
- <td>[`deployables-show`](#deployables-show)</td>
- </tr> 
- <tr> 
- <td>[`task-show`](...)</td>
- <td>[`help`](...)</td>
- </tr>
-  </tbody> 
- </table> 
-
 
 ## `ibmcloud cdb deployments`
 {: #deployments}
@@ -219,7 +161,7 @@ ibmcloud cdb deployment-cacert <deployment name or CRN> [--user <userid>] [--sav
    <dt>`--user <userid>` or `-u`</dt>
    <dd>By default, the admin user is used to obtain the certificate. This flag optionally allows a user to be specified where the deployment supports per user certificates.</dd>
    <dt>`--save` or `-s`</dt>
-   <dd>Save the decoded certificate into the certificate root directory. The default is $HOME/.bluemix/plugins/cdb/cdbcerts/.</dd>
+   <dd>Save the decoded certificate into the certificate root directory. The default is $HOME/.cloud/plugins/cdb/cdbcerts/.</dd>
    <dt>`--certroot <path>` or `-c`</dt>
    <dd>Use the path as the certificate root directory. If the path doesn't exist, it is created automatically. Works with the `--save` flag. The certificate root value can also be set in the `$CERTROOT` environment variable.</dd>
 </dl>

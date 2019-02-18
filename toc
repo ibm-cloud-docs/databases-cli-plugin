@@ -1,9 +1,9 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="cloud-databases-cli" audience="service" arm="3663051" href="/docs/cloud-databases-cli.html"}
-Cloud Databases CLI
-    {: .navgroup id="learn"}
+{: .toc subcollection="cloud-databases-cli" audience="service" arm="3663051" href="/docs/databases-cli-plugin/cloud-databases-cli.html" path="databases-cli-plugin"}
+IBM Cloud Databases CLI reference
+
     cloud-databases-cli.md
-    {: .navgroup-end}
+
 
