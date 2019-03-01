@@ -181,6 +181,26 @@ Note: The file name is based on the certificate name.
 
 
 
+## `ibmcloud cdb deployment-configuration`
+{: #deployment-configuration}
+
+Changes configurable settings on a deployment. The new configuration is specified in a JSON file or JSON string of settings. Settings vary by database type, see _Changing the Database Configuration_ for [PostgreSQL](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration). The command will poll the running task and exit when it has completed.
+
+```
+ibmcloud cdb deployment-configuration <deployment name or CRN> [@JSON_FILE | JSON_STRING]
+```
+
+**Command options**
+No specific command options. 
+
+**Examples**
+Change the max_connections for a PostgreSQL deployment named PGSettings4 to 150.
+```
+ibmcloud cdb deployment-configuration PGSettings4 '{"configuration":{"max_connections":150}}'
+```
+
+
+
 ## `ibmcloud cdb deployment-connections`
 {: #deployment-connections}
 
