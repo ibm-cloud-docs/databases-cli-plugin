@@ -453,7 +453,7 @@ ibmcloud cdb deployment-groups-set MyPGSQL member --memory 4096
 
 Retrieve and configure read-only replicas. Currently, only PostgreSQL deployments support read-only replicas.
 
-### `ibmcloud cdb help deployment-read-replicas`
+### `ibmcloud cdb deployment-read-replicas`
 {: #deployment-read-replicas}
 
 Short version - `read-replicas`
