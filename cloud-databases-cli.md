@@ -423,7 +423,7 @@ Short version - `groups-set`
 Sets the values for scaling groups (see deployment-groups). The user is able to set the total memory size in MB or total disk storage in MB, both of which are which is evenly divided between the members. Where available, the number of allocated CPUs can also be set.
 
 ```
-ibmcloud cdb deployment-groups-set <deployment name or CRN> <memberid> [--memory <memory size>] [--disk <disk size>] [--nowait] [--json]
+ibmcloud cdb deployment-groups-set <deployment name or CRN> <memberid> [--memory <memory size>] [--disk <disk size>] [--cpu <value>] [--nowait] [--json]
 ```
 
 The `memberid` is the name of the group for which these values are to be set. The name can be found through the `deployment-groups` command. Typically, it is "member".
@@ -434,6 +434,8 @@ The `memberid` is the name of the group for which these values are to be set. Th
    <dd>Set the specified deployment group's total memory, a value in MB.</dd>
    <dt>`--disk <disk size>` or `-d`</dt>
    <dd>Set the specified deployment group's total disk size, a value in MB.</dd>
+   <dt>`--cpu <value>` or `-c`</dt>
+   <dd>Set number of dedicated CPU cores.</dd>
    <dt>`--nowait` or `-n`</dt>
    <dd>Do not wait for the group setting task to complete. Display the scaling task's details and exit.</dd>
    <dt>`--json` or `-j`</dt>
