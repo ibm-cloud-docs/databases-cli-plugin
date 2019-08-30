@@ -29,7 +29,7 @@ The {{site.data.keyword.databases-for}} CLI Plug-in offers extra methods of acce
 ## The {{site.data.keyword.cloud_notm}} CLI
 {: #install_cli}
 
-The {{site.data.keyword.cloud_notm}} CLI is a general-purpose developer tool that provides access to your {{site.data.keyword.cloud_notm}} account and services through a command line interface.
+The {{site.data.keyword.cloud_notm}} CLI is a general-purpose developer tool that provides access to your {{site.data.keyword.cloud_notm}} account and services through a command-line interface.
 
 An introduction and installation instructions are available on the [{{site.data.keyword.cloud_notm}} CLI Overview](/docs/cli/reference/ibmcloud?topic=cloud-cli-ibmcloud-cli) page. If you install the CLI from the cURL command that is provided, you get a selection of extra plug-ins and extensions for multiple IDEs.
  
@@ -151,7 +151,7 @@ ibmcloud cdb about RedisDBOne
 ## Connections
 {: #connections}
 
-Get connection strings and certificate information to use when connecting to your deployment.
+Get connection strings and certificate information to use when you connect to your deployment.
 
 ### `ibmcloud cdb deployment-connections`
 {: #deployment-connections}
@@ -364,7 +364,7 @@ ibmcloud cdb deployment-configuration PGSettings4 '{"configuration":{"max_connec
 ## Scaling
 {: #scaling}
 
-Retrieve and configure the resources allocated to your deployment. 
+Retrieve and configure the resources that are allocated to your deployment. 
 
 ### `ibmcloud cdb deployables-groups-show`
 {: #deployables-groups-show}
@@ -395,7 +395,7 @@ Short version - `groups`
 
 Displays the scaling group values for a deployment's members. The scaling groups relate to Memory, CPU, and Disk. The default group is named "member". For each group, the number of nodes in the group are shown followed by
 * **Memory** The total memory allocation, the allocation per member, the minimum allocation and the increments the total memory can be varied by.
-* **CPU** The number of CPUs dedicated to the group. The CPU section shows 0 values in all the fields when there are no dedicated CPUs configures. The CPU group is  only displayed when it is adjustable.
+* **CPU** The number of CPUs dedicated to the group. The CPU section shows 0 values in all the fields when no dedicated CPUs are configured. The CPU group is  only displayed when it is adjustable.
 * **Disk** The total disk allocation, the allocation per member, the minimum allocation and the increments the total disk can be varied by.
 
 ```
@@ -506,12 +506,12 @@ ibmcloud cdb read-replica-leader MyPGSQL-replica
 ```
 
 
-### ibmcloud cdb read-replica-promote
+### `ibmcloud cdb read-replica-promote`
 {: #read-replica-promote}
 
 Short version - `rr-promote`
 
-Promotes the read-only replica to a standalone instance.
+Promotes the read-only replica to a stand-alone instance.
 
 ```
 ibmcloud cdb read-replica-promote <deployment name or CRN> [--json] [--nowait]
@@ -618,7 +618,7 @@ ibmcloud cdb backup-show crn:v1:bluemix:public:databases-for-postgresql:us-south
 
 Short version - `backup-now`
 
-Initiated an on-demand backup on the deployment. The command will poll the running backup and exit when it has completed.
+Initiated an on-demand backup on the deployment. The command polls the running backup and exits when it is completed.
 
 ```
 ibmcloud cdb deployment-backup-now <deployment name or CRN> [--nowait] [--json]
@@ -736,7 +736,7 @@ ibmcloud cdb deployment-whitelist-delete MyPSQL 198.51.100.0/24 "Testing range i
 ## Tasks
 {: #tasks}
 
-Tasks are created whenever you perform an action on your deployment. Tasks include things like taking a backup tasks, group scaling, and changing a user password. Most `cdb` commands  poll the running task and exit when it has completed. You can change this behavior with the `--nowait` flag which returns task information and exits.
+Tasks are created whenever you perform an action on your deployment. Tasks include things like taking a backup, group scaling, and changing a user password. Most `cdb` commands  poll the running task and exit when it has completed. You can change this behavior with the `--nowait` flag, which returns task information and exits.
 
 ### `ibmcloud cdb deployment-tasks-list`
 {: #deployment-tasks-list}
@@ -797,7 +797,7 @@ Perform administrative tasks on your deployment. Currently, only file-syncing fo
 
 Short version - `fs`
 
-Synchronizes files from the `ibm_file_sync` index to disk. See the [Uploading Files to Elasticsearch](/docs/services/databases-for-elasticsearch?topic-databases-for-elasticsearch-uploading-files) documentation for more information.
+Synchronizes files from the `ibm_file_sync` index to disk. See the [Uploading Files to Elasticsearch](/docs/services/databases-for-elasticsearch?topic=databases-for-elasticsearch-uploading-files) documentation for more information.
 
 ```
 ibmcloud cdb elasticsearch file-sync <deployment name or CRN> [--json] [--nowait]
