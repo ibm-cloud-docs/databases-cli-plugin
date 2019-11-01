@@ -2,7 +2,7 @@
  
 copyright:
   years: 2018, 2019
-lastupdated: "2019-01-18"
+lastupdated: "2019-10-31"
 
 ---
 
@@ -787,10 +787,10 @@ ibmcloud cdb task-show crn:v1:bluemix:public:databases-for-postgresql:us-south:a
 ```
 
 
-## Management
-{: #management}
+## Elasticsearch
+{: #elasticsearch}
 
-Perform administrative tasks on your deployment. Currently, only file-syncing for Elasticsearch deployments is supported.
+Perform tasks specific to Elasticsearch deployments.
 
 ### `ibmcloud cdb elasticsearch file-sync`
 {: #elasticsearch-file-sync}
@@ -815,4 +815,60 @@ ibmcloud cdb elasticsearch file-sync <deployment name or CRN> [--json] [--nowait
 Sync a file to disk on a deployment named "MyElasticsearch".
 ```
 ibmcloud cdb elasticsearch file-sync MyElasticsearch
+```
+
+
+## PostgreSQL
+{: #postgresql}
+
+Perform tasks specific to PostgreSQL deployments.
+
+### `ibmcloud cdb postgresql replication-slot-create`
+{: #postgresql-replication-slot-create}
+
+Short version - `rsc`
+
+Creates a new PostgreSQL replication slot. See the [Wal2json](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-wal2json) documentation for more information.
+
+```
+ibmcloud cdb postgresql replication-slot-create <deploymentid> <databasename> <slotname> <plugintype> [--json] [--nowait]
+```
+
+**Command options**  
+<dl>
+   <dt>`--nowait` or `-n`</dt>
+   <dd>Do not wait for the group setting task to complete. Display the scaling task's details and exit.</dd>
+   <dt>`--json` or `-j`</dt>
+   <dd>Return the results as JSON.</dd>
+</dl>
+
+**Examples**
+Create a replication slot on a deployment named "MyPostgres", database named "testdb", and slot named "slot1". The plugin type is required to be "wal2json".
+```
+ibmcloud cdb postgresql replication-slot-create MyPostgres testdb slot1 wal2json
+```
+
+### `ibmcloud cdb postgresql replication-slot-delete`
+{: #postgresql-replication-slot-delete}
+
+Short version - `rsd`   
+
+Deletes the specified PostgreSQL replication slot. See the [Wal2json](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-wal2json) documentation for more information.
+
+```
+ibmcloud cdb postgresql replication-slot-delete <deploymentid> <slotname> [--json] [--nowait]
+```
+
+**Command options**  
+<dl>
+   <dt>`--nowait` or `-n`</dt>
+   <dd>Do not wait for the group setting task to complete. Display the scaling task's details and exit.</dd>
+   <dt>`--json` or `-j`</dt>
+   <dd>Return the results as JSON.</dd>
+</dl>
+
+**Examples**
+Deletes a replication slot on a deployment named "MyPostgres"  and slot named "slot1".
+```
+ibmcloud cdb postgresql replication-slot-delete MyPostgres slot1
 ```
