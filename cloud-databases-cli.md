@@ -1,8 +1,8 @@
 ---
  
 copyright:
-  years: 2018, 2019
-lastupdated: "2019-10-31"
+  years: 2018, 2020
+lastupdated: "2020-03-06"
 
 ---
 
@@ -80,6 +80,8 @@ The `deployables` are the templates available for new database deployments. This
 ibmcloud cdb deployables-show [--stable] [--preferred] [--json]
 ```
 
+Short version - `deployables`
+
 **Command options**  
 <dl>
    <dt>`--stable` or `-s`</dt>
@@ -151,7 +153,7 @@ ibmcloud cdb about RedisDBOne
 ## Connections
 {: #connections}
 
-Get connection strings and certificate information to use when you connect to your deployment.
+Get connection strings and certificate information to use when you connect to your deployment. Manage connections for those databases that have the option.
 
 ### `ibmcloud cdb deployment-connections`
 {: #deployment-connections}
@@ -240,6 +242,29 @@ ibmcloud cdb deployment-cacert MyPostgreSQL --save --certroot .
 Note: The file name is based on the certificate name.
 
 
+### `ibmcloud cdb deployment-kill-connections`
+{: deployment-kill-connections}
+
+Short version - `kill-connections`
+
+Closes all the connections on a deployment. Available for PostgreSQL ONLY.
+```
+ibmcloud cdb deployment-kill-connections <deployment name or CRN> [--nowait] [--json]
+```
+
+**Command options**  
+<dl>
+   <dt>`--nowait` or `-n`</dt>
+   <dd>Do not wait for the user creation task to complete. Display the user creation task details and exit.</dd>
+   <dt>`--json` or `-j`</dt>
+   <dd>Display results as JSON.</dd>
+</dl>
+
+**Examples**
+This command kills all of the external connections to a deployment named `postgresq-preproduction`.
+```
+ibmcloud cdb deployment-kill-connections postgresq-preproduction
+```
 
 ## Users
 {: #users}
@@ -333,7 +358,31 @@ ibmcloud cdb deployment-password MyPSQL fred A9876B5432
 ## Database Configuration
 {: #database-configuration}
 
-Changes configurable settings on a deployment. The new configuration is specified in a JSON file or JSON string of settings. Settings vary by database type, see _Changing the Database Configuration_ for [PostgreSQL](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration).
+Lists or Changes configurable settings on a deployment. The new configuration is specified in a JSON file or JSON string of settings. Settings vary by database type, see _Changing the Database Configuration_ for [PostgreSQL](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration) or for [Redis](/docs/services/databases-for-redis?topic=databases-for-redis-changing-configuration).
+
+### `ibmcloud cdb deployment-configuration-schema`
+{: #deployment-configuration-schema}
+
+Short version - `config-schema`
+
+Gets the current configuration of the specified deployment.
+```
+ibmcloud cdb deployment-configuration-schema <deployment name or CRN> [--description] [--json]
+```
+
+**Command options**
+<dl>
+   <dt>`--json` or `-j`</dt>
+   <dd>Display results as JSON.</dd>
+   <dt>`--description` or `-d`</dt>
+   <dd>Show settings description.</dd>
+</dl>
+
+**Examples**
+```
+ibmcloud cdb deployment-configuration-schema my-redis-cache
+```
+
 
 ### `ibmcloud cdb deployment-configuration`
 {: #deployment-configuration}
@@ -343,7 +392,7 @@ Short version - `configuration`
 Changes the configuration of the specified deployment.
 
 ```
-ibmcloud cdb deployment-configuration <deployment name or CRN> [@JSON_FILE | JSON_STRING] [--json]
+ibmcloud cdb deployment-configuration <deployment name or CRN> [@JSON_FILE | JSON_STRING] [--json] [--nowait]
 ```
 
 **Command options**
@@ -448,7 +497,55 @@ Set a PostgreSQL deployment named "MyPGSQL" with a "member" group to have a tota
 ibmcloud cdb deployment-groups-set MyPGSQL member --memory 4096
 ```
 
+## Autoscaling
+{: #autoscaling}
 
+The Autoscaling configuration represents the various conditions that control autoscaling for a deployment. 
+
+### `ibmcloud cdb deployment-autoscaling`
+
+Short version - `autoscaling`
+
+Retrieve of all autoscaling conditions for a particular deployment. 
+```
+ibmcloud cdb deployment-autoscaling <deployment name or CRN> GROUP_ID [--json]
+```
+Autoscaling currently only applies to the data members on your deployment, so the `GROUP_ID` is `member`.
+
+**Command options**  
+<dl>
+   <dt>`--json` or `-j`</dt>
+   <dd>Return the results as JSON.</dd>
+</dl>
+
+**Examples**
+```
+ibmcloud cdb deployment-autoscaling elasticsearch-preproduction member
+```
+
+### `ibmcloud cdb deployment-autoscaling-set`
+
+Short version - `autoscaling-set`
+
+Enable, disable, or set the conditions for autoscaling on your deployment.
+```
+ibmcloud cdb deployment-autoscaling-set (NAME|ID) GROUP_ID (@JSON_FILE|JSON_STRING) [--json] [--nowait]
+```
+Autoscaling currently only applies to the data members on your deployment, so the `GROUP_ID` is `member`. The autoscaling parameters you would like to be set or unset are defined in a JSON object.
+
+**Command options**  
+<dl>
+   <dt>`--json` or `-j`</dt>
+   <dd>Return the results as JSON.</dd>
+   <dt>`--nowait` or `-n`</dt>
+   <dd>Do not wait for command completion.</dd>
+</dl>
+
+**Examples**
+This command sets memory to autoscale when I/O utilization hits a certain threshold for a deployment named `elasticsearch-preproduction`.
+```
+ibmcloud cdb deployment-autoscaling-set elasticsearch-preproduction member '{"autoscaling": { "memory": {"scalers": {"io_utilization": {"enabled": true, "over_period": "5m","above_percent": 90}},"rate": {"increase_percent": 10.0, "period_seconds": 300,"limit_mb_per_member": 125952,"units": "mb"}}}}'
+```
 
 ## Read-only Replicas
 {: #read-only-replicas}
@@ -514,7 +611,7 @@ Short version - `rr-promote`
 Promotes the read-only replica to a stand-alone instance.
 
 ```
-ibmcloud cdb read-replica-promote <deployment name or CRN> [--json] [--nowait]
+ibmcloud cdb read-replica-promote <deployment name or CRN> [--json] [--nowait] [--skip-initial-backup]
 ```
 
 **Command options**  
@@ -523,6 +620,8 @@ ibmcloud cdb read-replica-promote <deployment name or CRN> [--json] [--nowait]
    <dd>Return the results as JSON.</dd>
    <dt>`--nowait` or `-n`</dt>
    <dd>Do not wait for command completion.</dd>
+   <dt>`--skip-initial-backup` or `s`</dt>
+   <dd>Option to restore instance without taking a backup once data is restored. Allows restored deployment to be available sooner.</dd>
 </dl>
 
 **Examples**
@@ -823,6 +922,31 @@ ibmcloud cdb elasticsearch file-sync MyElasticsearch
 
 Perform tasks specific to PostgreSQL deployments.
 
+### `ibmcloud cdb postgresql earliest-pitr-timestamp`
+{: #postgresql-earliest-pitr-timestamp}
+
+Short version - `ept`
+
+Returns the earliest available time for point-in-time-recovery in ISO8601 UTC format. See the [Point in Time Recovery](/docs/databases-for-postgresql?topic=databases-for-postgresql-pitr) documentation for more information.
+
+```
+ibmcloud cdb postgresql earliest-pitr-timestamp <deployment name or CRN> [--json] [--nowait]
+```
+
+**Command options**
+<dl>
+   <dt>`--nowait` or `-n`</dt>
+   <dd>Do not wait for the group setting task to complete. Display the scaling task's details and exit.</dd>
+   <dt>`--json` or `-j`</dt>
+   <dd>Return the results as JSON.</dd>
+</dl>
+
+**Examples**
+```
+ibmcloud cdb postgresql earliest-pitr-timestamp postgresql-preproduction
+```
+
+
 ### `ibmcloud cdb postgresql replication-slot-create`
 {: #postgresql-replication-slot-create}
 
@@ -831,8 +955,9 @@ Short version - `rsc`
 Creates a new PostgreSQL replication slot. See the [Wal2json](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-wal2json) documentation for more information.
 
 ```
-ibmcloud cdb postgresql replication-slot-create <deploymentid> <databasename> <slotname> <plugintype> [--json] [--nowait]
+ibmcloud cdb postgresql replication-slot-create <deployment name or CRN> <databasename> <slotname> <plugintype> [--json] [--nowait]
 ```
+The plugin type is required to be "wal2json".
 
 **Command options**  
 <dl>
@@ -843,7 +968,7 @@ ibmcloud cdb postgresql replication-slot-create <deploymentid> <databasename> <s
 </dl>
 
 **Examples**
-Create a replication slot on a deployment named "MyPostgres", database named "testdb", and slot named "slot1". The plugin type is required to be "wal2json".
+Create a replication slot on a deployment named "MyPostgres", database named "testdb", and slot named "slot1".
 ```
 ibmcloud cdb postgresql replication-slot-create MyPostgres testdb slot1 wal2json
 ```
@@ -851,12 +976,12 @@ ibmcloud cdb postgresql replication-slot-create MyPostgres testdb slot1 wal2json
 ### `ibmcloud cdb postgresql replication-slot-delete`
 {: #postgresql-replication-slot-delete}
 
-Short version - `rsd`   
+Short version - `rsd`
 
 Deletes the specified PostgreSQL replication slot. See the [Wal2json](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-wal2json) documentation for more information.
 
 ```
-ibmcloud cdb postgresql replication-slot-delete <deploymentid> <slotname> [--json] [--nowait]
+ibmcloud cdb postgresql replication-slot-delete <deployment name or CRN> <slotname> [--json] [--nowait]
 ```
 
 **Command options**  
