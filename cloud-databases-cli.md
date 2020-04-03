@@ -13,10 +13,10 @@ lastupdated: "2020-03-06"
 {:screen: .screen}
 {:tip: .tip}
 
-# {{site.data.keyword.databases-for}} CLI Plug-in
+# {{site.data.keyword.databases-for}} CLI
 {: #cdb-reference}
 
-The {{site.data.keyword.databases-for}} CLI Plug-in offers extra methods of accessing the capabilities of the {{site.data.keyword.databases-for}} services. You can use {{site.data.keyword.databases-for}} CLI to manage and connect to 
+The {{site.data.keyword.databases-for}} CLI plug-in offers extra methods of accessing the capabilities of the {{site.data.keyword.databases-for}} services. You can use {{site.data.keyword.databases-for}} CLI to manage and connect to 
 - {{site.data.keyword.databases-for-postgresql_full}} 
 - {{site.data.keyword.databases-for-redis_full}} 
 - {{site.data.keyword.databases-for-elasticsearch_full}}
@@ -24,7 +24,7 @@ The {{site.data.keyword.databases-for}} CLI Plug-in offers extra methods of acce
 - {{site.data.keyword.messages-for-rabbitmq_full}}
 - {{site.data.keyword.databases-for-mongodb_full}}
 
-**Note**: {{site.data.keyword.databases-for}} CLI Plug-in requires IBM Cloud CLI to be installed.
+**Note**: The {{site.data.keyword.databases-for}} CLI plug-in requires IBM Cloud CLI to be installed.
 
 ## The {{site.data.keyword.cloud_notm}} CLI
 {: #install_cli}
