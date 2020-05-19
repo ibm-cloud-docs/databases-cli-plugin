@@ -1,7 +1,7 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="cloud-databases-cli" audience="service" href="/docs/databases-cli-plugin/cloud-databases-cli.html" path="databases-cli-plugin"}
+{: .toc subcollection="databases-cli-plugin" audience="service" href="/docs/databases-cli-plugin/cloud-databases-cli.html" path="databases-cli-plugin"}
 IBM Cloud Databases CLI reference
 
     cloud-databases-cli.md
