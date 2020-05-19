@@ -835,7 +835,7 @@ ibmcloud cdb deployment-whitelist-delete MyPSQL 198.51.100.0/24 "Testing range i
 ## Tasks
 {: #tasks}
 
-Tasks are created whenever you perform an action on your deployment. Tasks include things like taking a backup, group scaling, and changing a user password. Most `cdb` commands  poll the running task and exit when it has completed. You can change this behavior with the `--nowait` flag, which returns task information and exits. Records of successful tasks are shown for 24-48 hours, and unsuccessful tasks are shown for 7-8 days. A historical record of tasks from any time period is available through the [Activity Tracker integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker).
+Tasks are created whenever you perform an action on your deployment. Tasks include things like taking a backup, group scaling, and changing a user password. Most `cdb` commands  poll the running task and exit when it has completed. You can change this behavior with the `--nowait` flag, which returns task information and exits. Records of successful tasks are shown for 24-48 hours, and unsuccessful tasks are shown for 7-8 days. A historical record of tasks from any time period is available through the [Activity Tracker integration](/docs/databases-cli-plugin?topic=databases-cli-plugin-activity-tracker).
 
 ### `ibmcloud cdb deployment-tasks-list`
 {: #deployment-tasks-list}
