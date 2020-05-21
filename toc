@@ -4,6 +4,8 @@
 {: .toc subcollection="databases-cli-plugin" audience="service" href="/docs/databases-cli-plugin/cloud-databases-cli.html" path="databases-cli-plugin"}
 IBM Cloud Databases CLI reference
 
+    {: .navgroup id="reference"}
     cloud-databases-cli.md
+    {: .navgroup-end}
 
 
