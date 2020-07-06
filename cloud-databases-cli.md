@@ -35,7 +35,7 @@ An introduction and installation instructions are available on the [{{site.data.
  
 You can install just the stand-alone package from the [Installing the stand-alone IBM Cloud CLI](/docs/cli/reference/ibmcloud?topic=cloud-cli-install-ibmcloud-cli) page. 
 
-Access to services via {{site.data.keyword.cloud_notm}} CLI is governed through Identity and Access Management. In order to use the CLI to view or manage a service (or to grant privileges to another user on your account), you have to set the correct permissions. For more information about IAM management, see the [IAM Getting Started tutorial](/docs/iam?topic=iam-getstarted)
+Access to services via {{site.data.keyword.cloud_notm}} CLI is governed through Identity and Access Management. In order to use the CLI to view or manage a service (or to grant privileges to another user on your account), you must set the correct permissions. For more information about IAM management, see the [IAM Getting Started tutorial](/docs/iam?topic=iam-getstarted)
 
 ## Installing the {{site.data.keyword.databases-for}} CLI plug-in
 {: installing_cli_plugin}
@@ -171,7 +171,7 @@ ibmcloud cdb deployment-connections [--user <userid>] [--password <password>] [-
    <dt>`--start` or `-s`</dt>
    <dd>Start a connection by running the CLI command generated. If a password isn't specified in the flags, the command prompts for a password interactively. The plug-in uses the default commands for command-line interaction and managing the CA certificate to ensure a secure TLS session. Defaults to connecting as the deployment's admin user.</dt>
    <dt>`--user <userid>` or `-u`</dt>
-   <dd>Sets the userid that is used when retrieving connection settings. It is substituted into connection strings. Defaults to the deployment's admin user.</dd>
+   <dd>Sets the user ID that is used when retrieving connection settings. It is substituted into connection strings. Defaults to the deployment's admin user.</dd>
    <dt>`--password <password>` or `-p`</dt>
    <dd>Sets the password that is used when retrieving connection settings. It is substituted into connection strings where $PASSWORD appears as default.</dt>
    <dt>`--endpoint-type [public or private]` or `-e [public or private]`</dt>
@@ -282,7 +282,7 @@ Create a user on the deployment database.
 ibmcloud cdb deployment-user-create <deployment name or CRN> <newusername> <newpassword> [--nowait] [--json] 
 ```
 
-The `newusername` needs to be a correctly formatted user name for use on the deployment's database. The `newpassword` needs to comply with the database's password rules and must be at least 10 characters long.
+The `newusername` needs to be a correctly formatted username for use on the deployment's database. The `newpassword` needs to comply with the database's password rules and must be at least 10 characters long.
 
 **Command options**  
 <dl>
@@ -444,7 +444,7 @@ Short version - `groups`
 
 Displays the scaling group values for a deployment's members. The scaling groups relate to Memory, CPU, and Disk. The default group is named "member". For each group, the number of nodes in the group are shown followed by
 * **Memory** The total memory allocation, the allocation per member, the minimum allocation and the increments the total memory can be varied by.
-* **CPU** The number of CPUs dedicated to the group. The CPU section shows 0 values in all the fields when no dedicated CPUs are configured. The CPU group is  only displayed when it is adjustable.
+* **CPU** The number of CPUs dedicated to the group. The CPU section shows 0 values in all the fields when no dedicated CPUs are configured. The CPU group is only displayed when it is adjustable.
 * **Disk** The total disk allocation, the allocation per member, the minimum allocation and the increments the total disk can be varied by.
 
 ```
@@ -531,7 +531,7 @@ Enable, disable, or set the conditions for autoscaling on your deployment.
 ```
 ibmcloud cdb deployment-autoscaling-set (NAME|ID) GROUP_ID (@JSON_FILE|JSON_STRING) [--json] [--nowait]
 ```
-Autoscaling currently only applies to the data members on your deployment, so the `GROUP_ID` is `member`. The autoscaling parameters you would like to be set or unset are defined in a JSON object.
+Autoscaling currently only applies to the data members on your deployment, so the `GROUP_ID` is `member`. The autoscaling parameters that you would like to be set or unset are defined in a JSON object.
 
 **Command options**  
 <dl>
@@ -835,7 +835,7 @@ ibmcloud cdb deployment-whitelist-delete MyPSQL 198.51.100.0/24 "Testing range i
 ## Tasks
 {: #tasks}
 
-Tasks are created whenever you perform an action on your deployment. Tasks include things like taking a backup, group scaling, and changing a user password. Most `cdb` commands  poll the running task and exit when it has completed. You can change this behavior with the `--nowait` flag, which returns task information and exits. Records of successful tasks are shown for 24-48 hours, and unsuccessful tasks are shown for 7-8 days. A historical record of tasks from any time period is available through the [Activity Tracker integration](/docs/databases-cli-plugin?topic=databases-cli-plugin-activity-tracker).
+Tasks are created whenever you perform an action on your deployment. Tasks include things like taking a backup, group scaling, and changing a user password. Most `cdb` commands poll the running task and exit when it completes. You can change this behavior with the `--nowait` flag, which returns task information and exits. Records of successful tasks are shown for 24 - 48 hours, and unsuccessful tasks are shown for 7 - 8 days. A historical record of tasks from any time period is available through the [Activity Tracker integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker).
 
 ### `ibmcloud cdb deployment-tasks-list`
 {: #deployment-tasks-list}
@@ -865,7 +865,7 @@ ibmcloud cdb deployment-tasks-list NewRedis
 
 Short version - `task`
 
-Show the current status of a particular task. The task is identified by its CRN ID as shown with the `deployment-tasks-list` command. If the task is running, the command waits for the task to complete, reporting status changes as it regularly polls.
+Show the status of a particular task. The task is identified by its CRN ID as shown with the `deployment-tasks-list` command. If the task is running, the command waits for the task to complete, reporting status changes as it regularly polls.
 
 ```
 ibmcloud cdb task-show <CRN> [--nowait] [--json]
@@ -896,7 +896,7 @@ Perform tasks specific to Elasticsearch deployments.
 
 Short version - `fs`
 
-Synchronizes files from the `ibm_file_sync` index to disk. See the [Uploading Files to Elasticsearch](/docs/services/databases-for-elasticsearch?topic=databases-for-elasticsearch-uploading-files) documentation for more information.
+Synchronizes files from the `ibm_file_sync` index to disk. For more information, see the [Uploading Files to Elasticsearch](/docs/services/databases-for-elasticsearch?topic=databases-for-elasticsearch-uploading-files) documentation for more information.
 
 ```
 ibmcloud cdb elasticsearch file-sync <deployment name or CRN> [--json] [--nowait]
@@ -927,7 +927,7 @@ Perform tasks specific to PostgreSQL deployments.
 
 Short version - `ept`
 
-Returns the earliest available time for point-in-time-recovery in ISO8601 UTC format. See the [Point in Time Recovery](/docs/databases-for-postgresql?topic=databases-for-postgresql-pitr) documentation for more information.
+Returns the earliest available time for point-in-time-recovery in ISO8601 UTC format. For more information, see the [Point in Time Recovery](/docs/databases-for-postgresql?topic=databases-for-postgresql-pitr) documentation for more information.
 
 ```
 ibmcloud cdb postgresql earliest-pitr-timestamp <deployment name or CRN> [--json] [--nowait]
@@ -952,12 +952,12 @@ ibmcloud cdb postgresql earliest-pitr-timestamp postgresql-preproduction
 
 Short version - `rsc`
 
-Creates a new PostgreSQL replication slot. See the [Wal2json](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-wal2json) documentation for more information.
+Creates a new PostgreSQL replication slot. For more information, see the [Wal2json](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-wal2json) documentation for more information.
 
 ```
 ibmcloud cdb postgresql replication-slot-create <deployment name or CRN> <databasename> <slotname> <plugintype> [--json] [--nowait]
 ```
-The plugin type is required to be "wal2json".
+The plug-in type is required to be "wal2json".
 
 **Command options**  
 <dl>
@@ -996,4 +996,33 @@ ibmcloud cdb postgresql replication-slot-delete <deployment name or CRN> <slotna
 Deletes a replication slot on a deployment named "MyPostgres"  and slot named "slot1".
 ```
 ibmcloud cdb postgresql replication-slot-delete MyPostgres slot1
+```
+
+## EnterpriseDB
+{: #enterprisedb}
+
+Perform tasks specific to EnterpriseDB deployments.
+
+### `ibmcloud cdb enterprisedb earliest-pitr-timestamp`
+{: #enterprisedb-earliest-pitr-timestamp}
+
+Short version - `ept`
+
+Returns the earliest available time for point-in-time-recovery in ISO8601 UTC format. For more informaiton, see the [Point in Time Recovery](/docs/databases-for-postgresql?topic=databases-for-postgresql-pitr) documentation for more information.
+
+```
+ibmcloud cdb enterprisedb earliest-pitr-timestamp <deployment name or CRN> [--json] [--nowait]
+```
+
+**Command options**
+<dl>
+   <dt>`--nowait` or `-n`</dt>
+   <dd>Do not wait for the group setting task to complete. Display the scaling task's details and exit.</dd>
+   <dt>`--json` or `-j`</dt>
+   <dd>Return the results as JSON.</dd>
+</dl>
+
+**Examples**
+```
+ibmcloud cdb enterprisedb earliest-pitr-timestamp enterprisedb-preproduction
 ```
