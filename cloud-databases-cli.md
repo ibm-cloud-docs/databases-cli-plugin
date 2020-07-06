@@ -18,6 +18,7 @@ lastupdated: "2020-03-06"
 
 The {{site.data.keyword.databases-for}} CLI plug-in offers extra methods of accessing the capabilities of the {{site.data.keyword.databases-for}} services. You can use {{site.data.keyword.databases-for}} CLI to manage and connect to 
 - {{site.data.keyword.databases-for-postgresql_full}} 
+- {{site.data.keyword.databases-for-enterprisedb_full}}
 - {{site.data.keyword.databases-for-redis_full}} 
 - {{site.data.keyword.databases-for-elasticsearch_full}}
 - {{site.data.keyword.databases-for-etcd_full}}
