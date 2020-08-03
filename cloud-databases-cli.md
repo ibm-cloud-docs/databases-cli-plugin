@@ -744,14 +744,14 @@ ibmcloud cdb deployment-backup-now PgTips
 ## Security
 {: #security}
 
-Manage the IP whitelist for your deployment.
+Manage the IP allowlist for your deployment.
 
-### `ibmcloud cdb deployment-whitelist-list`
-{: #deployment-whitelist-list}
+### `ibmcloud cdb deployment-allowlist-list`
+{: #deployment-allowlist-list}
 
 Short version - `wl-ls`
 
-Displays the current whitelist for a deployment.
+Displays the current allowlist for a deployment.
 
 ```
 ibmcloud cdb deployment-whitelist-list <deployment name or CRN> [--json]
@@ -764,70 +764,70 @@ ibmcloud cdb deployment-whitelist-list <deployment name or CRN> [--json]
 </dl>
  
 **Examples**
-List the current whitelist for the "MyPSQL" deployment
+List the current allowlist for the "MyPSQL" deployment
 ```
 ibmcloud cdb deployment-whitelist-list MyPSQL
 ```
 
 
 ### `ibmcloud cdb deployment-whitelist-add`
-{: #deployment-whitelist-add}
+{: #deployment-allowlist-add}
 
 Short version - `wl-add`
 
-Add an IP address or range to the current whitelist for a deployment. An IP address is an IPv4 or IPv6 address while a range is a masked IPv4 address, for example, 1.2.3.0/24. The description is required to be a human readable string that describes the whitelisted address or range.
+Add an IP address or range to the current allowlist for a deployment. An IP address is an IPv4 or IPv6 address while a range is a masked IPv4 address, for example, 1.2.3.0/24. The description is required to be a human readable string that describes the allowlisted address or range.
 
 ```
-ibmcloud cdb deployment-whitelist-add <deployment name or CRN> <whitelist address or range> <description> [--nowait] [--json]
+ibmcloud cdb deployment-whitelist-add <deployment name or CRN> <allowlist address or range> <description> [--nowait] [--json]
 ```
 
 **Command options**  
 <dl>
    <dt>`--nowait` or `-n`</dt>
-   <dd>Do not wait for the whitelist add task to complete. Display the whitelist add task details and exit.</dd>
+   <dd>Do not wait for the allowlist add task to complete. Display the allowlist add task details and exit.</dd>
    <dt>`--json` or `-j`</dt>
    <dd>Display results as JSON.</dd>
 </dl>
 
  
 **Examples**
-Add the IP address 198.51.100.1 to the current whitelist for the "MyPSQL" deployment
+Add the IP address 198.51.100.1 to the current allowlist for the "MyPSQL" deployment
 ```
-ibmcloud cdb deployment-whitelist-add MyPSQL 198.51.100.1 "Whitelisted for testing"
+ibmcloud cdb deployment-whitelist-add MyPSQL 198.51.100.1 "allowlisted for testing"
 ```
 
-Add the IP range 198.51.100.0 to 198.51.100.255 to the current whitelist for the "MyPSQL" deployment
+Add the IP range 198.51.100.0 to 198.51.100.255 to the current allowlist for the "MyPSQL" deployment
 ```
 ibmcloud cdb deployment-whitelist-add MyPSQL 198.51.100.0/24 "Testing range is now open"
 ```
 
 
 ### `ibmcloud cdb deployment-whitelist-delete`
-{: #deployment-whitelist-delete}
+{: #deployment-allowlist-delete}
 
 Short version - `wl-del`
 
-Removes an IP address or range from the current whitelist for a deployment. An IP address is an IPv4 or IPv6 address while a range is a masked IPv4 address, for example, 1.2.3.0/24. 
+Removes an IP address or range from the current allowlist for a deployment. An IP address is an IPv4 or IPv6 address while a range is a masked IPv4 address, for example, 1.2.3.0/24. 
 ```
-ibmcloud cdb deployment-whitelist-delete <deployment name or CRN> <whitelist address or range> [--nowait] [--json]
+ibmcloud cdb deployment-whitelist-delete <deployment name or CRN> <allowlist address or range> [--nowait] [--json]
 ```
 
 **Command options**  
 <dl>
    <dt>`--nowait` or `-n`</dt>
-   <dd>Do not wait for the whitelist delete task to complete. Display the whitelist delete task details and exit.</dd>
+   <dd>Do not wait for the allowlist delete task to complete. Display the allowlist delete task details and exit.</dd>
    <dt>`--json` or `-j`</dt>
    <dd>Display results as JSON.</dd>
 </dl>
 
  
 **Examples**
-Remove the IP address 198.51.100.1 from the current whitelist for the "MyPSQL" deployment
+Remove the IP address 198.51.100.1 from the current allowlist for the "MyPSQL" deployment
 ```
-ibmcloud cdb deployment-whitelist-delete MyPSQL 198.51.100.1 "Whitelisted for testing"
+ibmcloud cdb deployment-whitelist-delete MyPSQL 198.51.100.1 "allowlisted for testing"
 ```
 
-Remove the IP range 198.51.100.0 to 198.51.100.255 from the current whitelist for the "MyPSQL" deployment
+Remove the IP range 198.51.100.0 to 198.51.100.255 from the current allowlist for the "MyPSQL" deployment
 ```
 ibmcloud cdb deployment-whitelist-delete MyPSQL 198.51.100.0/24 "Testing range is now open"
 ```
