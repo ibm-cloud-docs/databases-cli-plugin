@@ -746,7 +746,7 @@ ibmcloud cdb deployment-backup-now PgTips
 
 Manage the IP allowlist for your deployment.
 
-### `ibmcloud cdb deployment-allowlist-list`
+### `ibmcloud cdb deployment-whitelist-list`
 {: #deployment-allowlist-list}
 
 Short version - `wl-ls`
