@@ -1,0 +1,18 @@
+#  Name your file `toc.yaml`
+#  Make sure you include all nav file coding requirements, as defined in https://test.cloud.ibm.com/docs/writing?topic=writing-code-nav
+#  Anything with a fully qualified URL with `http` or `https` will get an external link icon added to the nav entry
+---
+toc:
+  properties:
+    subcollection: databases-cli-plugin
+    version: 2
+    category: database
+    audience: service
+    href: /docs/databases-cli-plugin/cloud-databases-cli.html
+    path: databases-cli-plugin
+    label: IBM Cloud Databases CLI reference
+  entries: 
+  - navgroup: 
+      id: reference
+      topics:
+      - cloud-databases-cli.md
