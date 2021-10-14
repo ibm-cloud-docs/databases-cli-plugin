@@ -718,7 +718,7 @@ ibmcloud cdb backup-show crn:v1:bluemix:public:databases-for-postgresql:us-south
 
 Short version - `backup-now`
 
-Initiated an on-demand backup on the deployment. The command polls the running backup and exits when it is completed.
+Initiates an on-demand backup on the deployment. The command polls the running backup and exits when it is completed.
 
 ```
 ibmcloud cdb deployment-backup-now <deployment name or CRN> [--nowait] [--json]
