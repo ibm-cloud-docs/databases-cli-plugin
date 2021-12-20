@@ -2,7 +2,7 @@
  
 copyright:
   years: 2018, 2020
-lastupdated: "2020-03-06"
+lastupdated: "2021-12-20"
 
 ---
 
@@ -18,6 +18,7 @@ lastupdated: "2020-03-06"
 
 The {{site.data.keyword.databases-for}} CLI plug-in offers extra methods of accessing the capabilities of the {{site.data.keyword.databases-for}} services. You can use {{site.data.keyword.databases-for}} CLI to manage and connect to 
 - {{site.data.keyword.databases-for-postgresql_full}} 
+- {{site.data.keyword.databases-for-mysql_full}}
 - {{site.data.keyword.databases-for-enterprisedb_full}}
 - {{site.data.keyword.databases-for-redis_full}} 
 - {{site.data.keyword.databases-for-elasticsearch_full}}
@@ -39,7 +40,7 @@ You can install just the stand-alone package from the [Installing the stand-alon
 Access to services via {{site.data.keyword.cloud_notm}} CLI is governed through Identity and Access Management. In order to use the CLI to view or manage a service (or to grant privileges to another user on your account), you must set the correct permissions. For more information about IAM management, see the [IAM Getting Started tutorial](/docs/account?topic=account-access-getstarted)
 
 ## Installing the {{site.data.keyword.databases-for}} CLI plug-in
-{: installing_cli_plugin}
+{: #installing_cli_plugin}
 
 Once you have the {{site.data.keyword.cloud_notm}} CLI, [login](/docs/cli?topic=cli-ibmcloud_cli#ibmcloud_login) and ask it to install the cloud databases plug-in. 
  
@@ -52,7 +53,7 @@ Use `ibmcloud cdb help` for a list of commands and usage information.
 
 Display help for the plug-in. Alone, this command displays the available top-level commands. Followed by another command, it displays specific help for that command.
 
-```
+```shell
 ibmcloud cdb help [<command>]
 ```
 
@@ -61,7 +62,7 @@ No command-specific options.
  
 **Examples**
 Get help on the task-show command.
-```
+```shell
 ibmcloud cdb help task-show
 ```
 
@@ -77,7 +78,7 @@ Get information about the deployable databases and database versions on the {{si
 
 The `deployables` are the templates available for new database deployments. This command shows deployable database types, specifically the available versions of databases, and their preferred or stable status.
 
-```
+```shell
 ibmcloud cdb deployables-show [--stable] [--preferred] [--json]
 ```
 
