@@ -387,7 +387,7 @@ ibmcloud cdb deployment-password MyPSQL fred A9876B5432
 ## Database Configuration
 {: #database-configuration}
 
-Lists or Changes configurable settings on a deployment. The new configuration is specified in a JSON file or JSON string of settings. Settings vary by database type, see _Changing the Database Configuration_ for [PostgreSQL](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration) or for [Redis](/docs/services/databases-for-redis?topic=databases-for-redis-changing-configuration).
+List or change configurable settings on a deployment. The new configuration is specified in a JSON file or JSON string of settings. Settings vary by database type, see _Changing the Database Configuration_ for [PostgreSQL](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration) or for [Redis](/docs/services/databases-for-redis?topic=databases-for-redis-changing-configuration).
 
 ### `ibmcloud cdb deployment-configuration-schema`
 {: #deployment-configuration-schema}
