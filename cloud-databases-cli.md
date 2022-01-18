@@ -2,7 +2,7 @@
  
 copyright:
   years: 2018, 2020
-lastupdated: "2022-01-04"
+lastupdated: "2022-01-18"
 
 ---
 
@@ -202,6 +202,9 @@ ibmcloud cdb deployment-connections [--user <userid>] [--password <password>] [-
    Show only the settings that are relevant to `app` connections or `cli` connections.
 - `--json` or `-j`
    Display results as JSON.
+- `--endpoint-type` or `-e`
+   Endpoint type for returned connection strings, either `public` or `private`. Default is `public`.
+   As the default is `public`, if there are no `public` endpoints then none will be found and you will receive an error: `{"errors":"not_found"}`. Use the `-e private` flag to use `private` endpoints. 
 
 #### Examples
 {: #connections-examples}
