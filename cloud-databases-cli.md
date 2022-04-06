@@ -1,8 +1,12 @@
 ---
  
 copyright:
-  years: 2018, 2020
-lastupdated: "2022-01-18"
+  years: 2018, 2022
+lastupdated: "2022-04-05"
+
+keywords: Compose, cloud databases, migrating, disk size, memory size, CPU size, resources, cli
+
+subcollection: cloud-databases
 
 ---
 
@@ -27,7 +31,8 @@ The {{site.data.keyword.databases-for}} CLI plug-in offers extra methods of acce
 - {{site.data.keyword.messages-for-rabbitmq_full}}
 - {{site.data.keyword.databases-for-mongodb_full}}
 
-The {{site.data.keyword.databases-for}} CLI plug-in requires IBM Cloud CLI to be installed.{: .note}
+The {{site.data.keyword.databases-for}} CLI plug-in requires IBM Cloud CLI to be installed.
+{: .note}
 
 ## The {{site.data.keyword.cloud_notm}} CLI
 {: #install_cli}
@@ -55,7 +60,7 @@ ibmcloud cdb help
 ```
  for a list of commands and usage information.
 
-### `ibmcloud cdb help`
+## `ibmcloud cdb help`
 {: #help}
 
 On its own, the `ibmcloud cdb help` command displays the available top-level commands. When followed by another command, it displays specific help for that command.
@@ -64,12 +69,12 @@ On its own, the `ibmcloud cdb help` command displays the available top-level com
 ibmcloud cdb help [<command>]
 ```
 
-#### Command options
+### Command options
 {: #ibmcloud-cdb-help-cmd-options}
 
 No command-specific options.
  
-#### Examples 
+### Examples 
 {: #ibmcloud-cdb-help-examples}
 
 Get help on the task-show command.
