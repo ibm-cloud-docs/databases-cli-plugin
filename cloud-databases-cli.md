@@ -2,9 +2,9 @@
  
 copyright:
   years: 2018, 2022
-lastupdated: "2022-04-05"
+lastupdated: "2022-05-12"
 
-keywords: Compose, cloud databases, migrating, disk size, memory size, CPU size, resources, cli
+keywords: cloud databases, migrating, disk size, memory size, CPU size, resources, cli, postgresql administrator, cloud database cli
 
 subcollection: cloud-databases
 
