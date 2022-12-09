@@ -551,7 +551,7 @@ ibmcloud cdb deployment-groups-set MyPGSQL member --memory 4096
 ```
 
 ## Autoscaling
-{: #autoscaling}
+{: #autoscaling-config}
 
 The Autoscaling configuration represents the various conditions that control autoscaling for a deployment. 
 
