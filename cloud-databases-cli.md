@@ -2,7 +2,7 @@
  
 copyright:
   years: 2018, 2022
-lastupdated: "2022-05-12"
+lastupdated: "2022-12-09"
 
 keywords: cloud databases, migrating, disk size, memory size, CPU size, resources, cli, postgresql administrator, cloud database cli
 
@@ -609,7 +609,7 @@ ibmcloud cdb deployment-autoscaling-set elasticsearch-preproduction member '{"au
 ```
 
 ## Read-only Replicas
-{: #read-only-replicas}
+{: #config-retrieve-read-only-replicas}
 
 Retrieve and configure read-only replicas. Currently, only PostgreSQL deployments support read-only replicas.
 
