@@ -701,7 +701,7 @@ ibmcloud cdb read-replica-leader <deployment name or CRN> [--long] [--json]
 
 
 #### Examples
-{: #deployment-read-replicas-examples}
+{: #read-replica-leader-examples}
 
 List the leader for a PostgreSQL read-only replica deployment named "MyPGSQL-replica".
 ```sh
