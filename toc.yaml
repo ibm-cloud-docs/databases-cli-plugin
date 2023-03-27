@@ -5,10 +5,8 @@
 toc:
   properties:
     subcollection: databases-cli-plugin
-    version: 2
-    category: database
     audience: service
-    href: /docs/databases-cli-plugin/cloud-databases-cli.html
+    href: /docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference
     path: databases-cli-plugin
     label: IBM Cloud Databases CLI reference
   entries: 
