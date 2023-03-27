@@ -1,8 +1,8 @@
 ---
  
 copyright:
-  years: 2018, 2022
-lastupdated: "2022-12-09"
+  years: 2018, 2023
+lastupdated: "2023-03-27"
 
 keywords: cloud databases, migrating, disk size, memory size, CPU size, resources, cli, postgresql administrator, cloud database cli
 
@@ -10,13 +10,7 @@ subcollection: cloud-databases
 
 ---
 
-{:shortdesc: .shortdesc}
-{:external: .external target="_blank"}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:note: .note}
+{{site.data.keyword.attribute-definition-list}}
 
 # {{site.data.keyword.databases-for}} CLI
 {: #cdb-reference}
