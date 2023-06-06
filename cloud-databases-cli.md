@@ -2,7 +2,7 @@
  
 copyright:
   years: 2018, 2023
-lastupdated: "2023-03-27"
+lastupdated: "2023-06-06"
 
 keywords: cloud databases, migrating, disk size, memory size, CPU size, resources, cli, postgresql administrator, cloud database cli
 
@@ -15,17 +15,18 @@ subcollection: cloud-databases
 # {{site.data.keyword.databases-for}} CLI
 {: #cdb-reference}
 
-The {{site.data.keyword.databases-for}} CLI plug-in offers extra methods of accessing the capabilities of the {{site.data.keyword.databases-for}} services. You can use {{site.data.keyword.databases-for}} CLI to manage and connect to 
-- {{site.data.keyword.databases-for-postgresql_full}} 
-- {{site.data.keyword.databases-for-mysql_full}}
-- {{site.data.keyword.databases-for-enterprisedb_full}}
-- {{site.data.keyword.databases-for-redis_full}} 
-- {{site.data.keyword.databases-for-elasticsearch_full}}
-- {{site.data.keyword.databases-for-etcd_full}}
-- {{site.data.keyword.messages-for-rabbitmq_full}}
-- {{site.data.keyword.databases-for-mongodb_full}}
+The {{site.data.keyword.databases-for}} CLI plug-in offers extra methods of accessing the capabilities of the {{site.data.keyword.databases-for}} services. You can use the {{site.data.keyword.databases-for}} CLI to manage and connect to the following services:
+- [{{site.data.keyword.databases-for-postgresql_full}}](/docs/databases-for-postgresql)
+- [{{site.data.keyword.databases-for-mysql_full}}](/docs/databases-for-mysql)
+- [{{site.data.keyword.databases-for-enterprisedb_full}}](/docs/databases-for-enterprisedb)
+- [{{site.data.keyword.databases-for-redis_full}}](/docs/databases-for-redis) 
+- [{{site.data.keyword.databases-for-elasticsearch_full}}](/docs/databases-for-elasticsearch)
+- [{{site.data.keyword.databases-for-etcd_full}}](/docs/databases-for-etcd)
+- [{{site.data.keyword.messages-for-rabbitmq_full}}](/docs/messages-for-rabbitmq)
+- [{{site.data.keyword.databases-for-mongodb_full}}](/docs/databases-for-mongodb)
+- [{{site.data.keyword.databases-for-cassandra_full}}](/docs/databases-for-cassandra)
 
-The {{site.data.keyword.databases-for}} CLI plug-in requires IBM Cloud CLI to be installed.
+The {{site.data.keyword.databases-for}} CLI plug-in requires [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-getting-started) to be installed.
 {: .note}
 
 ## The {{site.data.keyword.cloud_notm}} CLI
@@ -35,27 +36,24 @@ The {{site.data.keyword.cloud_notm}} CLI is a general-purpose developer tool tha
 
 An introduction and installation instructions are available on the [{{site.data.keyword.cloud_notm}} CLI Getting Started page](/docs/cli?topic=cli-getting-started){: .external}. If you install the CLI from the cURL command that is provided, you get a selection of extra plug-ins and extensions for multiple IDEs.
  
-You can install just the stand-alone package from the [Installing the stand-alone IBM Cloud CLI](/docs/cli?topic=cli-install-ibmcloud-cli) page. 
+Install the stand-alone package from the [Installing the stand-alone IBM Cloud CLI](/docs/cli?topic=cli-install-ibmcloud-cli) page. 
 
 Access to services via {{site.data.keyword.cloud_notm}} CLI is governed through Identity and Access Management. In order to use the CLI to view or manage a service (or to grant privileges to another user on your account), you must set the correct permissions. For more information about IAM management, see the [IAM Getting Started tutorial](/docs/account?topic=account-access-getstarted)
 
 ## Installing the {{site.data.keyword.databases-for}} CLI plug-in
 {: #installing-cli-plugin}
 
-Once you have the {{site.data.keyword.cloud_notm}} CLI, [log in](/docs/cli?topic=cli-ibmcloud_cli#ibmcloud_login) and install the {{site.data.keyword.databases-for}} plug-in. 
- 
+Once you have the {{site.data.keyword.cloud_notm}} CLI, [log in](/docs/cli?topic=cli-ibmcloud_cli#ibmcloud_login) and install the {{site.data.keyword.databases-for}} plug-in, using a command like:
 ```sh
 ibmcloud plugin install cloud-databases
 ```
 {: .pre}
  
-You can use 
+For a list of commands and usage information, use a command like: 
 ```sh
 ibmcloud cdb help
 ```
 {: .pre}
-
- for a list of commands and usage information.
 
 ## `ibmcloud cdb help`
 {: #help}
@@ -310,6 +308,133 @@ This command kills all of the external connections to a deployment named `postgr
 ibmcloud cdb deployment-kill-connections postgresq-preproduction
 ```
 {: .pre}
+
+## Capability
+{: #capability}
+
+The capability commands help you to identify which features are available and supported for your databases and backups.
+```sh
+ibmcloud cdb capability
+```
+{: pre}
+
+### `capability-show`
+{: #capability-show}
+
+This command discovers if a capability is supported for a particular database type.
+
+Short version - `cs`
+
+```sh
+ibmcloud cdb capability-show CAPABILITY_ID TYPE VERSION PLATFORM LOCATION TARGET_PLATFORM TARGET_LOCATION [--json] [--api-version]
+```
+{: pre}
+
+#### Command options  
+{: #capability-show-command-options}
+
+- `--json` or `-j`
+   Display results as JSON.
+- `--api-version` or `-v`   
+   API Version used for request.
+
+#### Capability ID options
+{: #capability-show-id-options}
+
+- `autoscaling`
+- `encryption`
+- `endpoints`
+- `groups`
+- `locations`
+- `point_in_time_recovery`
+- `remotes`
+- `restores`
+- `versions`
+
+#### Examples
+{: #capability-show-examples}
+
+```sh
+ibmcloud cdb capability-show 5f2d37a0-40a5-4a39-bf6a-0dbb1249ac5e database 3.2.1 IBMCloud us-south
+```
+{: pre}
+
+### `backup-capability-show`
+{: #capability-backup-show}
+
+This command discovers if a database type can be restored from a particular instance.
+
+Short version - `bcs`
+
+```sh
+ibmcloud cdb discover-capability-information-from-backup (BACKUP_ID) (CAPABILITY_ID) (TARGET_PLATFORM) (TARGET_LOCATION) [--json] [--api-version] [--nowait]
+```
+{: pre}
+
+#### Command options  
+{: #capability-backup-show-command-options}
+
+- `--json` or `-j`
+   Display results as JSON.
+- `--api-version` or `-v`   
+   API Version used for request.
+
+#### Capability ID options
+{: #capability-backup-show-id-options}
+
+- `restores`
+
+#### Examples
+{: #capability-backup-show-examples}
+
+```sh
+  ibmcloud cdb discover-capability-information-from-backup f7d318b6-6d4e-4d2a-9be4-7c1efbc94a52 5f2d37a0-40a5-4a39-bf6a-0dbb1249ac5e IBMCloud us-south --json --api-version 2021-09-30 --nowait
+```
+{: pre}
+
+### `deployment-capability-show`
+{: #deployment-capability-show}
+
+This command discovers if a particular deployment or formation supports a particular capability.
+
+Short version - `dcs`
+
+```sh
+ibmcloud cdb deployment-capability-show (NAME|ID) (CAPABILITY_ID) [--target-platform] [--target-location] [--json] [--api-version] [--nowait]
+```
+{: pre}
+
+#### Command options  
+{: #deployment-capability-show-command-options}
+
+- `--json` or `-j`
+   Display results as JSON.
+- `--api-version` or `-v`   
+   API Version used for request.
+- `--target-platform` or `-p`
+   Target platform for request
+- `--target-location` or `-l`
+   Target location for request
+
+#### Capability ID options
+{: #deployment-capability-show-id-options}
+
+- `autoscaling`
+- `encryption`
+- `endpoints`
+- `groups`
+- `locations`
+- `point_in_time_recovery`
+- `remotes`
+- `versions`
+
+#### Examples
+{: #deployment-capability-show-examples}
+
+```sh
+ibmcloud cdb deployment-capability-show my-deployment 5f2d37a0-40a5-4a39-bf6a-0dbb1249ac5e --target-location us-south --json --api-version 2021-09-30 --nowait
+```
+{: pre}
 
 ## Users
 {: #users}
@@ -571,6 +696,33 @@ The `memberid` is the name of the group for which these values are to be set. Th
 Set a PostgreSQL deployment named "MyPGSQL" with a "member" group to have a total memory to 4096 MB.
 ```sh
 ibmcloud cdb deployment-groups-set MyPGSQL member --memory 4096
+```
+{: .pre}
+
+## Regions
+{: #regions}
+
+Lists all of the regions that deployments can be provisioned into from the current region.
+
+```sh
+ibmcloud cdb regions [--json] [--api-version]
+```
+{: .pre}
+
+### Command options
+{: #regions-command-options}
+
+- `--json` or `-j`
+   Return the results as JSON.
+- `api-version value`
+   API Version used for request.
+
+### Examples
+{: #regions-examples}
+
+Return a JSON of all the regions that deployments can be provisioned into from the current region.
+```sh
+ibmcloud cdb regions --json
 ```
 {: .pre}
 
@@ -869,7 +1021,7 @@ Short version - `wl-ls`
 Displays the current allowlist for a deployment.
 
 ```sh
-ibmcloud cdb deployment-whitelist-list <deployment name or CRN> [--json]
+ibmcloud cdb deployment-allowlist-list <deployment name or CRN> [--json]
 ```
 {: .pre}
 
@@ -889,7 +1041,7 @@ ibmcloud cdb deployment-whitelist-list MyPSQL
 ```
 {: .pre}
 
-### `ibmcloud cdb deployment-whitelist-add`
+### `ibmcloud cdb deployment-allowlist-add`
 {: #deployment-allowlist-add}
 
 Short version - `wl-add`
@@ -897,7 +1049,7 @@ Short version - `wl-add`
 Add an IP address or range to the current allowlist for a deployment. An IP address is an IPv4 or IPv6 address while a range is a masked IPv4 address, for example, 1.2.3.0/24. The description is required to be a human readable string that describes the allowlisted address or range.
 
 ```sh
-ibmcloud cdb deployment-whitelist-add <deployment name or CRN> <allowlist address or range> <description> [--nowait] [--json]
+ibmcloud cdb deployment-allowlist-add <deployment name or CRN> <allowlist address or range> <description> [--nowait] [--json]
 ```
 {: .pre}
 
@@ -924,14 +1076,14 @@ ibmcloud cdb deployment-whitelist-add MyPSQL 198.51.100.0/24 "Testing range is n
 ```
 {: .pre}
 
-### `ibmcloud cdb deployment-whitelist-delete`
+### `ibmcloud cdb deployment-allowlist-delete`
 {: #deployment-allowlist-delete}
 
 Short version - `wl-del`
 
 Removes an IP address or range from the current allowlist for a deployment. An IP address is an IPv4 or IPv6 address while a range is a masked IPv4 address, for example, 1.2.3.0/24. 
 ```sh
-ibmcloud cdb deployment-whitelist-delete <deployment name or CRN> <allowlist address or range> [--nowait] [--json]
+ibmcloud cdb deployment-allowlist-delete <deployment name or CRN> <allowlist address or range> [--nowait] [--json]
 ```
 {: .pre}
 
@@ -1053,6 +1205,37 @@ ibmcloud cdb elasticsearch file-sync MyElasticsearch
 ```
 {: .pre}
 
+### `ibmcloud cdb elasticsearch user-list`
+{: #elasticsearch-user-list}
+
+Short version - `ul`
+
+Lists all users from the database internal credential store. For more information, see [Retrieve and update user passwords](/docs/databases-for-elasticsearch?topic=databases-for-elasticsearch-upgrading&interface=cli#esupgrade-retrieve-update-user-passwords).
+
+```sh
+ibmcloud cdb elasticsearch user-list (NAME|ID) (ADMIN_PASSWORD) [--json] [-c DIRECTORY] [--api-version]
+```
+{: .pre}
+
+#### Command options  
+{: #elasticsearch-file-sync-command-options}
+
+- `--json` or `-j`
+   Return the results as JSON.
+- `-c DIRECTORY`
+   Certificate Root
+- `--api-version`
+   API Version used for request.
+
+#### Examples
+{: #elasticsearch-file-sync-examples}
+
+The `user-list` command outputs various options for your account's user list.
+```sh
+ibmcloud cdb elasticsearch user-list
+```
+{: .pre}
+
 ## PostgreSQL
 {: #postgresql}
 
@@ -1156,7 +1339,7 @@ Perform tasks specific to EnterpriseDB deployments.
 
 Short version - `ept`
 
-Returns the earliest available time for point-in-time-recovery in ISO8601 UTC format. For more informaiton, see the [Point in Time Recovery](/docs/databases-for-postgresql?topic=databases-for-postgresql-pitr) documentation for more information.
+Returns the earliest available time for point-in-time-recovery in ISO8601 UTC format. For more information, see [Point in Time Recovery](/docs/databases-for-postgresql?topic=databases-for-postgresql-pitr).
 
 ```sh
 ibmcloud cdb enterprisedb earliest-pitr-timestamp <deployment name or CRN> [--json] [--nowait]
@@ -1170,11 +1353,48 @@ ibmcloud cdb enterprisedb earliest-pitr-timestamp <deployment name or CRN> [--js
    Do not wait for the group setting task to complete. Display the scaling task's details and exit.
 - `--json` or `-j`
    Return the results as JSON.
+- `api-version value`
+   API Version used for request.
 
 #### Examples
 {: #enterprisedb-earliest-pitr-timestamp-examples}
 
 ```sh
 ibmcloud cdb enterprisedb earliest-pitr-timestamp enterprisedb-preproduction
+```
+{: .pre}
+
+## MongoDB Enterprise
+{: #mongodb}
+
+Perform tasks specific to MongoDB Enterprise deployments.
+
+### `ibmcloud cdb mongodbee earliest-pitr-timestamp`
+{: #mongodbee-earliest-pitr-timestamp}
+
+Short version - `ept`
+
+Returns the earliest available time for point-in-time-recovery in ISO8601 UTC format. For more information, [Point in Time Recovery](https://cloud.ibm.com/docs/databases-for-mongodb?topic=databases-for-mongodb-pitr&interface=ui).
+
+```sh
+ibmcloud cdb mongodb-enterprise earliest-pitr-timestamp <deployment name or CRN> [--json] [--nowait]
+```
+{: .pre}
+
+#### Command options
+{: #mongodbee-earliest-pitr-timestamp-command-options}
+
+- `--nowait` or `-n`
+   Do not wait for the group setting task to complete. Display the scaling task's details and exit.
+- `--json` or `-j`
+   Return the results as JSON.
+- `api-version value`
+   API Version used for request.
+
+#### Examples
+{: #mongodbee-earliest-pitr-timestamp-examples}
+
+```sh
+ibmcloud cdb mongodb earliest-pitr-timestamp (NAME|ID)
 ```
 {: .pre}
