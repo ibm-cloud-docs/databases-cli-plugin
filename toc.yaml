@@ -14,3 +14,4 @@ toc:
       id: reference
       topics:
       - cloud-databases-cli.md
+      - cli-changelog.md
