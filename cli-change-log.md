@@ -2,7 +2,7 @@
 
 copyright:
   years:  2023
-lastupdated: "2023-06-07"
+lastupdated: "2023-07-06"
 
 keywords: change log for Cloud Databases CLI, updates to Cloud Databases CLI
 
@@ -16,6 +16,9 @@ subcollection: cloud-databases
 {: #cli-change-log}
 
 In this change log, you can learn about the latest changes, improvements, and updates for the {{site.data.keyword.databases-for}} CLI. 
+
+## Version 0.16.2
+{: #cli-0162}
 
 ## Version 0.16.1
 {: #cli-0161}
