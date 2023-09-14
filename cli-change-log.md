@@ -2,7 +2,7 @@
 
 copyright:
   years:  2023
-lastupdated: "2023-08-31"
+lastupdated: "2023-09-14"
 
 keywords: change log for Cloud Databases CLI, updates to Cloud Databases CLI
 
