@@ -2,7 +2,7 @@
 
 copyright:
   years:  2023
-lastupdated: "2023-11-09"
+lastupdated: "2023-12-06"
 
 keywords: change log for Cloud Databases CLI, updates to Cloud Databases CLI
 
@@ -15,7 +15,14 @@ subcollection: cloud-databases
 # {{site.data.keyword.databases-for}} CLI change log
 {: #cli-change-log}
 
-In this change log, you can learn about the latest changes, improvements, and updates for the {{site.data.keyword.databases-for}} CLI plug-in. 
+In this change log, you can learn about the latest changes, improvements, and updates for the {{site.data.keyword.databases-for}} CLI plug-in.
+
+## Version 0.17.1
+{: #cli-0171}
+
+- Adds `deployment-user-set` command to update Redis roles.
+- Removes default role from `deployment-user-create`.
+- Updates description of `deployment-user-create` since Redis is also using this command.
 
 ## Version 0.16.9
 {: #cli-0169}
