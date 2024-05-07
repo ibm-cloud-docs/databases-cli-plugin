@@ -1,8 +1,8 @@
 ---
  
 copyright:
-  years: 2018, 2023
-lastupdated: "2023-06-06"
+  years: 2018, 2024
+lastupdated: "2024-05-07"
 
 keywords: cloud databases, migrating, disk size, memory size, CPU size, resources, cli, postgresql administrator, cloud database cli
 
@@ -335,8 +335,10 @@ ibmcloud cdb capability-show CAPABILITY_ID TYPE VERSION PLATFORM LOCATION TARGET
 
 - `--json` or `-j`
    Display results as JSON.
-- `--api-version` or `-v`   
+- `--api-version` or `-v`
    API Version used for request.
+- `--hostflavor`
+   Host flavor for groups capability.
 
 #### Capability ID options
 {: #capability-show-id-options}
@@ -356,6 +358,16 @@ ibmcloud cdb capability-show CAPABILITY_ID TYPE VERSION PLATFORM LOCATION TARGET
 
 ```sh
 ibmcloud cdb capability-show 5f2d37a0-40a5-4a39-bf6a-0dbb1249ac5e database 3.2.1 IBMCloud us-south
+```
+{: pre}
+
+```sh
+ibmcloud cdb capability-show groups postgresql 15 classic eu-gb classic us-south --hostflavor multitenant
+```
+{: pre}
+
+```sh
+ibmcloud cdb capability-show groups postgresql 15 classic eu-gb classic us-south --hostflavor b3c.4x16.encrypted
 ```
 {: pre}
 
