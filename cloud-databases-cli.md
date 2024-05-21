@@ -2,7 +2,7 @@
  
 copyright:
   years: 2018, 2024
-lastupdated: "2024-05-07"
+lastupdated: "2024-05-20"
 
 keywords: cloud databases, migrating, disk size, memory size, CPU size, resources, cli, postgresql administrator, cloud database cli
 
@@ -681,7 +681,7 @@ Short version - `groups-set`
 Sets the values for scaling groups (see deployment-groups). The user is able to set the total memory size in MB or total disk storage in MB, both of which are which is evenly divided between the members. Where available, the number of allocated CPUs can also be set.
 
 ```sh
-ibmcloud cdb deployment-groups-set <deployment name or CRN> <memberid> [--memory <memory size>] [--disk <disk size>] [--cpu <value>] [--nowait] [--json]
+ibmcloud cdb deployment-groups-set <deployment name or CRN> <memberid> [--memory <memory size>] [--disk <disk size>] [--cpu <value>] [--hostflavor <val>] [--nowait] [--json]
 ```
 {: .pre}
 
@@ -696,6 +696,8 @@ The `memberid` is the name of the group for which these values are to be set. Th
    Set the specified deployment group's total disk size, a value in MB.
 - `--cpu <value>` or `-c`
    Set number of dedicated CPU cores.
+`--hostflavor <val>` 
+   Set the hosting flavor of the database: select from `multitenant` for Shared Compute or the individual size selections for Isolated Compute.
 - `--nowait` or `-n`
    Do not wait for the group setting task to complete. Display the scaling task's details and exit.
 - `--json` or `-j`
