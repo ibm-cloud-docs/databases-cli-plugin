@@ -696,7 +696,7 @@ The `memberid` is the name of the group for which these values are to be set. Th
    Set the specified deployment group's total disk size, a value in MB.
 - `--cpu <value>` or `-c`
    Set number of dedicated CPU cores.
-`--hostflavor <val>` 
+- `--hostflavor <val>` 
    Set the hosting flavor of the database: select from `multitenant` for Shared Compute or the individual size selections for Isolated Compute.
 - `--nowait` or `-n`
    Do not wait for the group setting task to complete. Display the scaling task's details and exit.
