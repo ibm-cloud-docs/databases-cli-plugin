@@ -697,7 +697,7 @@ The `memberid` is the name of the group for which these values are to be set. Th
 - `--cpu <value>` or `-c`
    Set number of dedicated CPU cores.
 - `--hostflavor <val>` 
-   Set the hosting flavor of the database: select from `multitenant` for Shared Compute or the individual size selections for Isolated Compute.
+   Set the hosting flavor of the database: select from `multitenant` for Shared Compute or the individual size selections for Isolated Compute. 
 - `--nowait` or `-n`
    Do not wait for the group setting task to complete. Display the scaling task's details and exit.
 - `--json` or `-j`

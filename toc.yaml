@@ -9,8 +9,8 @@ toc:
     href: /docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference
     path: databases-cli-plugin
     label: IBM Cloud Databases CLI reference
-  entries: 
-  - navgroup: 
+  entries:
+  - navgroup:
       id: reference
       topics:
       - cloud-databases-cli.md
