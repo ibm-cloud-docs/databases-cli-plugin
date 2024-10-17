@@ -2,7 +2,7 @@
  
 copyright:
   years: 2018, 2024
-lastupdated: "2024-05-20"
+lastupdated: "2024-10-17"
 
 keywords: cloud databases, migrating, disk size, memory size, CPU size, resources, cli, postgresql administrator, cloud database cli
 
@@ -24,7 +24,6 @@ The {{site.data.keyword.databases-for}} CLI plug-in offers extra methods of acce
 - [{{site.data.keyword.databases-for-etcd_full}}](/docs/databases-for-etcd)
 - [{{site.data.keyword.messages-for-rabbitmq_full}}](/docs/messages-for-rabbitmq)
 - [{{site.data.keyword.databases-for-mongodb_full}}](/docs/databases-for-mongodb)
-- [{{site.data.keyword.databases-for-cassandra_full}}](/docs/databases-for-cassandra)
 
 The {{site.data.keyword.databases-for}} CLI plug-in requires [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-getting-started) to be installed.
 {: .note}
@@ -697,7 +696,7 @@ The `memberid` is the name of the group for which these values are to be set. Th
 - `--cpu <value>` or `-c`
    Set number of dedicated CPU cores.
 - `--hostflavor <val>` 
-   Set the hosting flavor of the database: select from `multitenant` for Shared Compute or the individual size selections for Isolated Compute.
+   Set the hosting flavor of the database: select from `multitenant` for Shared Compute or the individual size selections for Isolated Compute. 
 - `--nowait` or `-n`
    Do not wait for the group setting task to complete. Display the scaling task's details and exit.
 - `--json` or `-j`
@@ -1410,5 +1409,28 @@ ibmcloud cdb mongodb-enterprise earliest-pitr-timestamp <deployment name or CRN>
 
 ```sh
 ibmcloud cdb mongodb earliest-pitr-timestamp (NAME|ID)
+```
+{: .pre}
+
+## Redis
+{: #Redisdb}
+
+Perform tasks specific to Redis deployments.
+
+### `ibmcloud cdb redis user-set`
+{: #Redisdb-user-edit}
+
+Edit the roles of Redis users. For more information, see [Managing Redis RBAC](https://cloud.ibm.com/docs/databases-for-redis?topic=databases-for-redis-user-management&interface=ui#user-management-roles).
+
+```sh
+ibmcloud cdb redis user-set <"roles">
+```
+{: .pre}
+
+#### Examples
+{: #Redisdb-examples}
+
+```sh
+ibmcloud cdb redis user-set "-all +@read"
 ```
 {: .pre}
